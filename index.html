@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>šatronizator</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h4>šatro me pretvori</h4>
+<div class="input-group">
+<input type="text" id="satrotext" class="form-control" placeholder="upiši tekst">
+<span class="input-group-btn">
+<button class="btn btn-default" id="satriziraj" type="button">šatroniziraj!</button>
+</span>
+</div>
+</div>
+<div class="jumbotron">
+<div id="rez" ></div>
+</div>
+</div>
+<script>
+function satro(e){var t=[];var n=[];var r=[];var i=["a","e","i","o","u"];var s=e.split("");s.forEach(function(e){t.push(e);i.forEach(function(n){var r=new RegExp(n,"gi");if(e.match(r)){var i=e.replace(e,"|");t.push(i)}})});var o=t.join("");var u=o.split(" ");u.forEach(function(e){var t=(e.match(/\|/g)||[]).length;var r=Math.round(t/2);if(e.slice(-1)=="|"){e=e.substring(0,e.length-1)}var i=e.split("|");var t=0;i.forEach(function(e){t++;if(t==r){n.push(e+"|")}else{n.push(e)}});n.push(" ")});var a=n.join("");var f=a.split(" ");f.forEach(function(e){var t=e.split("|");if(t[1]){r.push(t[1]+t[0])}else{r.push(t[0])}});var l=r.join(" ");return l}$("#satriziraj").click(function(){var e=$("#satrotext").val();var t=satro(e);$("#rez").html(t);$("#rez").append("<p>&nbsp</p><a href='mailto:?subject=satronizator&body="+encodeURIComponent(t)+"' target='_blank'>mail2</a> ")})
+</script>
+</body>
+</html>
